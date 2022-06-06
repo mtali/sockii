@@ -4,7 +4,8 @@
   "description": "A simple app to learn about creating bi-direction communication between client and server using sockets",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node index.js"
   },
   "author": "Emmanuel Mtali",
   "license": "ISC",
