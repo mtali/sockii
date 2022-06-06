@@ -2,9 +2,11 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 const { instrument } = require("@socket.io/admin-ui");
 
-const httpServer = createServer();
+const server = createServer();
 
-const io = new Server(httpServer, {
+const PORT = process.env.PORT || 3000;
+
+const io = new Server(server, {
   cors: {
     origin: ["https://admin.socket.io"],
     credentials: true
@@ -27,4 +29,8 @@ instrument(io, {
   auth: false
 });
 
-httpServer.listen(3000);
+server.listen(PORT, () => {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log("server is listening at http://%s:%s", host, port);
+});
