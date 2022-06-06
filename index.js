@@ -19,17 +19,19 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('publish', (msg) => {
-        console.log('Publish message: ' + msg);
+    socket.on('publish', (msg, param, callback) => {
+        console.log('Received publish message: ' + msg);
+        callback({
+            status: 'ok'
+        });
     });
-
 });
 
 instrument(io, {
   auth: false
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
     var host = server.address().address;
     var port = server.address().port;
     console.log("server is listening at http://%s:%s", host, port);
